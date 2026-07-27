@@ -1,6 +1,6 @@
 # Spec: Spellkit–Lexical Contract
 
-Status: Draft for review
+Status: Approved on 2026-07-26
 
 ## Objective
 
@@ -48,6 +48,7 @@ The names below are contract-level proposals, not an implementation.
 import type {
   LexicalEditor,
   NodeKey,
+  TextNode,
 } from "lexical";
 
 export interface SpellChecker {
@@ -78,6 +79,8 @@ export interface SpellCheckMatch {
   /** UTF-16 length in request.text; must be greater than zero. */
   readonly length: number;
   readonly suggestions?: readonly string[];
+  /** Optional stable category supplied by the checker. */
+  readonly code?: string;
   /** Checker-specific metadata preserved without interpretation. */
   readonly data?: unknown;
 }
@@ -98,6 +101,7 @@ export interface SpellCheckIssue {
   readonly text: string;
   readonly range: SpellCheckRange;
   readonly suggestions: readonly string[];
+  readonly code?: string;
   readonly data?: unknown;
 }
 
@@ -121,6 +125,11 @@ export interface SpellCheckOptions {
   readonly checker: SpellChecker;
   readonly language?: string | (() => string | undefined);
   readonly debounceMs?: number;
+  /**
+   * Runs inside a Lexical read transaction. It must be synchronous and
+   * side-effect-free.
+   */
+  readonly shouldCheck?: (node: TextNode) => boolean;
   readonly onError?: (error: unknown) => void;
 }
 
@@ -163,14 +172,17 @@ export function registerSpellCheck(
 - Published issue ranges always refer to the editor revision from which their
   checker request was created.
 - When the editor changes, previous issues are not applied to the new revision.
-  They are removed or replaced as one atomic snapshot notification.
+  They are cleared as one atomic snapshot notification before the new check.
 - The first implementation checks text within each top-level element
   independently. Spellkit does not form words across top-level block
   boundaries.
 - Spellkit must support words spanning adjacent text nodes within one block,
   including nodes split by inline formatting.
 - Nodes that are not ordinary editable text are excluded by default. The exact
-  extension point for custom-node inclusion is an open question.
+- `shouldCheck` lets consumers exclude candidate text nodes. Returning `false`
+  excludes the node. If it throws, extraction stops and the error is reported
+  through the standard error path.
+- Text stored only inside a custom non-text node is outside the v1 contract.
 
 ### Subscription semantics
 
@@ -361,15 +373,13 @@ transitions and offset-mapping branches require automated coverage.
 - Words split across inline formatting are mapped correctly.
 - The package passes its build, test, lint, and typecheck commands.
 
-## Open Questions
+## Resolved Design Decisions
 
-1. Should consumers be able to exclude or include custom Lexical nodes with a
-   predicate, a node-type list, or a text-extractor registry?
-2. Should `language` be global per controller, resolved per top-level block, or
-   supplied only inside a custom checker?
-3. While a new check is running, should the snapshot immediately clear old
-   issues (current proposal), or retain them with an explicit stale marker?
-4. Should checker matches support an optional checker-defined issue code in v1,
-   distinct from opaque `data`?
-5. Is `replace()` part of the desired minimal core, or should core only expose
-   a range-resolution helper from which consumers implement replacements?
+1. V1 uses a synchronous, side-effect-free `shouldCheck` text-node predicate.
+   A custom extractor registry is deferred until a concrete non-text-node use
+   case establishes its mapping requirements.
+2. `language` is global per controller and may be a static value or getter.
+3. Issues are cleared immediately when their editor revision becomes stale.
+4. Checker matches support an optional checker-defined `code` alongside opaque
+   `data`.
+5. `replace()` remains in the minimal core as a safe convenience operation.
