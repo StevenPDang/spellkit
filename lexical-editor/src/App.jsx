@@ -4,6 +4,7 @@ import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
 import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary";
+import { SpellCheckPlugin } from "./SpellCheckPlugin.jsx";
 import "./App.css";
 
 const theme = {
@@ -50,6 +51,7 @@ export default function Editor() {
             <HistoryPlugin />
             <AutoFocusPlugin />
           </div>
+          <SpellCheckPlugin />
         </LexicalComposer>
       </section>
     </main>

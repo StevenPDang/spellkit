@@ -159,8 +159,8 @@ export function registerSpellCheck(
 - Suggestions default to an empty immutable array.
 - Aborting a request is advisory: stale results are discarded even if the
   checker ignores `AbortSignal`.
-- Rejected checker promises set the snapshot status to `error`. The last
-  revision-valid issue list remains available.
+- Rejected checker promises set the snapshot status to `error`. Issues remain
+  empty because checking clears the previous revision before work begins.
 
 ### Lexical semantics
 
@@ -178,7 +178,7 @@ export function registerSpellCheck(
   boundaries.
 - Spellkit must support words spanning adjacent text nodes within one block,
   including nodes split by inline formatting.
-- Nodes that are not ordinary editable text are excluded by default. The exact
+- Nodes that are not ordinary editable text are excluded by default.
 - `shouldCheck` lets consumers exclude candidate text nodes. Returning `false`
   excludes the node. If it throws, extraction stops and the error is reported
   through the standard error path.

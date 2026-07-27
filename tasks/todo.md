@@ -70,14 +70,14 @@ nodes.
 
 **Acceptance criteria:**
 
-- [ ] Each top-level block is a separate check unit.
-- [ ] Words split by inline formatting map across their source text nodes.
-- [ ] `shouldCheck` exclusions and UTF-16 offsets behave as specified.
+- [x] Each top-level block is a separate check unit.
+- [x] Words split by inline formatting map across their source text nodes.
+- [x] `shouldCheck` exclusions and UTF-16 offsets behave as specified.
 
 **Verification:**
 
-- [ ] Run `npm test -- tests/integration/textMapping.test.ts`.
-- [ ] Run `npm run typecheck`.
+- [x] Run `npm test -- tests/integration/textMapping.test.ts`.
+- [x] Run `npm run typecheck`.
 
 **Dependencies:** Task 2
 
@@ -97,17 +97,17 @@ and disposal semantics.
 
 **Acceptance criteria:**
 
-- [ ] Text changes schedule debounced checks while selection-only changes do
+- [x] Text changes schedule debounced checks while selection-only changes do
   not.
-- [ ] Stale or aborted checker responses can never publish.
-- [ ] Snapshot identity, notification ordering, errors, and idempotent disposal
+- [x] Stale or aborted checker responses can never publish.
+- [x] Snapshot identity, notification ordering, errors, and idempotent disposal
   match the spec.
 
 **Verification:**
 
-- [ ] Run `npm test -- tests/integration/controller.test.ts`.
-- [ ] Run `npm run build`.
-- [ ] Run `npm run typecheck`.
+- [x] Run `npm test -- tests/integration/controller.test.ts`.
+- [x] Run `npm run build`.
+- [x] Run `npm run typecheck`.
 
 **Dependencies:** Task 3
 
@@ -127,16 +127,16 @@ membership and live-editor text validation before one discrete Lexical update.
 
 **Acceptance criteria:**
 
-- [ ] A current issue replaces exactly its mapped range and returns `true`.
-- [ ] Stale, foreign, or text-mismatched issues leave the editor unchanged and
+- [x] A current issue replaces exactly its mapped range and returns `true`.
+- [x] Stale, foreign, or text-mismatched issues leave the editor unchanged and
   return `false`.
-- [ ] A successful replacement is one undoable editor operation with the
+- [x] A successful replacement is one undoable editor operation with the
   selection after the inserted text.
 
 **Verification:**
 
-- [ ] Run `npm test -- tests/integration/replacement.test.ts`.
-- [ ] Run `npm run typecheck`.
+- [x] Run `npm test -- tests/integration/replacement.test.ts`.
+- [x] Run `npm run typecheck`.
 
 **Dependencies:** Task 4
 
@@ -156,15 +156,15 @@ test.
 
 **Acceptance criteria:**
 
-- [ ] Runtime and type exports match the approved contract.
-- [ ] Built JavaScript and declarations resolve through package exports.
-- [ ] Core output has no React import or dependency.
+- [x] Runtime and type exports match the approved contract.
+- [x] Built JavaScript and declarations resolve through package exports.
+- [x] Core output has no React import or dependency.
 
 **Verification:**
 
-- [ ] Run `npm test -- tests/contract/publicApi.test.ts`.
-- [ ] Run `npm run build`.
-- [ ] Run `npm run typecheck`.
+- [x] Run `npm test -- tests/contract/publicApi.test.ts`.
+- [x] Run `npm run build`.
+- [x] Run `npm run typecheck`.
 
 **Dependencies:** Tasks 4 and 5
 
@@ -178,11 +178,11 @@ test.
 
 ## Checkpoint: Core package
 
-- [ ] Run `npm test`.
-- [ ] Run `npm run build`.
-- [ ] Run `npm run lint`.
-- [ ] Run `npm run typecheck`.
-- [ ] Compare the public declarations and behavior with the approved spec.
+- [x] Run `npm test`.
+- [x] Run `npm run build`.
+- [x] Run `npm run lint`.
+- [x] Run `npm run typecheck`.
+- [x] Compare the public declarations and behavior with the approved spec.
 
 ## Task 7: Prove the contract in the demo
 
@@ -192,14 +192,14 @@ entirely demo-owned.
 
 **Acceptance criteria:**
 
-- [ ] The demo registers a checker and reacts to controller snapshots.
-- [ ] Demo-owned code renders a misspelling indicator and suggestion UI.
-- [ ] Selecting a suggestion calls `replace()` successfully.
+- [x] The demo registers a checker and reacts to controller snapshots.
+- [x] Demo-owned code renders a misspelling indicator and suggestion UI.
+- [x] Selecting a suggestion calls `replace()` successfully.
 
 **Verification:**
 
-- [ ] Run `npm --prefix lexical-editor run build`.
-- [ ] Run `npm --prefix lexical-editor run lint`.
+- [x] Run `npm --prefix lexical-editor run build`.
+- [x] Run `npm --prefix lexical-editor run lint`.
 - [ ] Manually type a misspelling, observe its indicator, and replace it.
 
 **Dependencies:** Task 6
@@ -222,17 +222,17 @@ semantics.
 **Acceptance criteria:**
 
 - [ ] Every success criterion in the approved spec has evidence.
-- [ ] All automated and demo build checks pass.
-- [ ] Documentation accurately describes the shipped public API.
+- [x] All automated and demo build checks pass.
+- [x] Documentation accurately describes the shipped public API.
 
 **Verification:**
 
-- [ ] Run `npm test`.
-- [ ] Run `npm run build`.
-- [ ] Run `npm run lint`.
-- [ ] Run `npm run typecheck`.
-- [ ] Run `npm --prefix lexical-editor run build`.
-- [ ] Run `npm --prefix lexical-editor run lint`.
+- [x] Run `npm test`.
+- [x] Run `npm run build`.
+- [x] Run `npm run lint`.
+- [x] Run `npm run typecheck`.
+- [x] Run `npm --prefix lexical-editor run build`.
+- [x] Run `npm --prefix lexical-editor run lint`.
 
 **Dependencies:** Task 7
 
@@ -247,6 +247,6 @@ semantics.
 ## Checkpoint: Complete
 
 - [ ] All eight tasks meet their acceptance criteria.
-- [ ] No task introduced React or presentation behavior into core.
-- [ ] The approved contract remains backward-compatible with its specification.
-- [ ] Implementation is ready for human review.
+- [x] No task introduced React or presentation behavior into core.
+- [x] The approved contract remains backward-compatible with its specification.
+- [x] Implementation is ready for human review.
