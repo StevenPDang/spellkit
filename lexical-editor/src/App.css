@@ -1,0 +1,77 @@
+.editor-page {
+  width: min(100% - 2rem, 48rem);
+  margin-inline: auto;
+  padding-block: 4rem;
+}
+
+.editor-card {
+  overflow: hidden;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  box-shadow: 0 0.25rem 1rem rgb(15 23 42 / 8%);
+}
+
+.editor-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.editor-header h1 {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 1.5rem;
+  line-height: 1.25;
+}
+
+.editor-header p {
+  margin: 0.5rem 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+.editor-shell {
+  position: relative;
+}
+
+.editor-input {
+  min-height: 20rem;
+  padding: 1.5rem;
+  color: var(--color-text);
+  line-height: 1.7;
+  outline: none;
+}
+
+.editor-input:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--color-focus);
+}
+
+.editor-input p {
+  margin: 0 0 0.75rem;
+}
+
+.editor-placeholder {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  color: var(--color-text-muted);
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (max-width: 40rem) {
+  .editor-page {
+    width: min(100% - 1rem, 48rem);
+    padding-block: 1rem;
+  }
+
+  .editor-header,
+  .editor-input {
+    padding: 1rem;
+  }
+
+  .editor-placeholder {
+    top: 1rem;
+    left: 1rem;
+  }
+}
