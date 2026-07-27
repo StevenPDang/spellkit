@@ -41,16 +41,16 @@ that validates, orders, and normalizes results returned by injected checkers.
 
 **Acceptance criteria:**
 
-- [ ] The request, match, issue, snapshot, options, checker, and controller
+- [x] The request, match, issue, snapshot, options, checker, and controller
   contracts match the approved spec.
-- [ ] Invalid, out-of-bounds, and overlapping matches are rejected
+- [x] Invalid, out-of-bounds, and overlapping matches are rejected
   deterministically.
-- [ ] Suggestions, optional codes, and opaque data normalize without mutation.
+- [x] Suggestions, optional codes, and opaque data normalize without mutation.
 
 **Verification:**
 
-- [ ] Run `npm test -- tests/contract/checker.test.ts`.
-- [ ] Run `npm run typecheck`.
+- [x] Run `npm test -- tests/contract/checker.test.ts`.
+- [x] Run `npm run typecheck`.
 
 **Dependencies:** Task 1
 
