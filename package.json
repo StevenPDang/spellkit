@@ -3,9 +3,22 @@
   "version": "0.0.0",
   "description": "Spellcheck tooling for Lexical editors",
   "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "vitest run",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
   "peerDependencies": {
-    "lexical": "^0.48.0",
-    "react": "^19.2.7"
+    "lexical": "^0.48.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.8.0",
+    "globals": "^17.8.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.65.0",
+    "vitest": "^4.1.10"
   }
 }
-

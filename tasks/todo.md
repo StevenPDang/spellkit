@@ -11,16 +11,16 @@ promised by the spec and package metadata suitable for later export work.
 
 **Acceptance criteria:**
 
-- [ ] `build`, `test`, `lint`, and `typecheck` scripts exist and run.
-- [ ] Strict TypeScript compiles a minimal source entry and test fixture.
-- [ ] Build output and dependency directories are ignored by Git.
+- [x] `build`, `test`, `lint`, and `typecheck` scripts exist and run.
+- [x] Strict TypeScript compiles a minimal source entry and test fixture.
+- [x] Build output and dependency directories are ignored by Git.
 
 **Verification:**
 
-- [ ] Run `npm run build`.
-- [ ] Run `npm test`.
-- [ ] Run `npm run lint`.
-- [ ] Run `npm run typecheck`.
+- [x] Run `npm run build`.
+- [x] Run `npm test`.
+- [x] Run `npm run lint`.
+- [x] Run `npm run typecheck`.
 
 **Dependencies:** None
 
